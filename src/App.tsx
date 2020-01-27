@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import Main from 'components/Main';
 
-const App: React.FC = () => {
+import './sass/styles.scss';
+// import ComponentOne from 'components/ComponentOne';
+const ComponentOne = lazy(() => import('components/ComponentOne'))
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Suspense fallback={<div>Loading</div>}>
+        <Router>
+          <ul className="links">
+            <li><Link className='link' to='/main'>Main Page <br /></Link></li>
+            <li><Link className='link' to='/component1'>ComponentOne <br /></Link></li>
+          </ul>
+          <Route path="/component1" component={ComponentOne} />
+          <Route path="/main" exact component={Main} />
+        </Router>
+      </Suspense>
     </div>
   );
 }
