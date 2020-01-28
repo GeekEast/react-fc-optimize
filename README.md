@@ -81,23 +81,6 @@ const ComponentOne = lazy(() => import('components/ComponentOne'))
 - `解决`: 状态下调，使得状态的变化只会引起子组件的状态变化
 - `工具`: dev tool 里面选择highlight updates when components render. `蓝色`，`绿色`， `黄色`，`红色`。其中蓝色是指**最不频繁**的更新，其次是`绿色`，`黄色`，`红色`。黄色和红色并不一定是不好的，之所以出现黄色或者红色，组件这个时候确实因为某些state或者props改变导致了**频繁更新**。
 #### asynchronous render
-  
-
-### 9. Absolute Import
-- `.env`
-```env
-<!-- .env -->
-NODE_PATH="./src"
-```
-- `tsconfig.json`
-```javascript
-{
-  "compilerOptions": {
-    "baseUrl": "src" // core
-  },
-  "include": ["src"]
-}
-```
 
 
 
